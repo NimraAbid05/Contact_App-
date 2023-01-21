@@ -1,14 +1,6 @@
+import 'package:contact_app/views/contactdetail.dart';
 import 'package:flutter/material.dart';
-
-class Home_View extends StatefulWidget {
-  const Home_View({super.key});
-
-  @override
-  State<Home_View> createState() => _Home_ViewState();
-}
-
-class _Home_ViewState extends State<Home_View> {
-  List contact = [
+List contact = [
     {"name": "Asma", "number": "03000067009"},
     {"name": "Ali", "number": "03003456789"},
     {"name": "Babar", "number": "03232323232"},
@@ -28,6 +20,15 @@ class _Home_ViewState extends State<Home_View> {
     {"name": "Zubair", "number": "03003456789"},
     {"name": "Zuha", "number": "03003456789"},
   ];
+class Home_View extends StatefulWidget {
+  const Home_View({super.key});
+
+  @override
+  State<Home_View> createState() => _Home_ViewState();
+}
+
+class _Home_ViewState extends State<Home_View> {
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,14 +55,19 @@ class _Home_ViewState extends State<Home_View> {
           itemCount: contact.length,
           itemBuilder: (context, i) {
             return InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Contact_Details()));
+              },
               child: ListTile(
                 title: Text("${contact[i]['name']}"),
                 subtitle: Text("${contact[i]['number']}"),
                 leading: CircleAvatar(
                   backgroundColor: Colors.black,
                   radius: 20,
-                  child: Icon(Icons.person,),
+                  child: Icon(
+                    Icons.person,
+                  ),
                 ),
               ),
             );
